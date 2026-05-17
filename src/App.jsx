@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Sidebar from './components/Sidebar.jsx'
 import MainContent from './components/MainContent.jsx'
+import { DashboardProvider } from './context/DashboardContext.jsx'
 import './App.css'
 
 const SECTIONS = [
@@ -91,19 +92,21 @@ function App() {
   const currentSection = SECTIONS.find(s => s.id === activeSection)
 
   return (
-    <div className="app-shell">
-      <Sidebar
-        sections={SECTIONS}
-        activeSection={activeSection}
-        onSectionChange={setActiveSection}
-        collapsed={sidebarCollapsed}
-        onToggleCollapse={() => setSidebarCollapsed(prev => !prev)}
-      />
-      <MainContent
-        section={currentSection}
-        sidebarCollapsed={sidebarCollapsed}
-      />
-    </div>
+    <DashboardProvider>
+      <div className="app-shell">
+        <Sidebar
+          sections={SECTIONS}
+          activeSection={activeSection}
+          onSectionChange={setActiveSection}
+          collapsed={sidebarCollapsed}
+          onToggleCollapse={() => setSidebarCollapsed(prev => !prev)}
+        />
+        <MainContent
+          section={currentSection}
+          sidebarCollapsed={sidebarCollapsed}
+        />
+      </div>
+    </DashboardProvider>
   )
 }
 

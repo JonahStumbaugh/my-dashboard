@@ -5,6 +5,7 @@ import Finance from './Finance.jsx'
 import Habits from './Habits.jsx'
 import Calendar from './Calendar.jsx'
 import Work from './Work.jsx'
+import ChatPanel from './ChatPanel.jsx'
 import './MainContent.css'
 
 const PLACEHOLDERS = {
@@ -74,6 +75,7 @@ function MainContent({ section, sidebarCollapsed }) {
       </div>
 
       <div className="main-content__body">
+        <ChatPanel sectionId={section.id} sectionColor={section.color} />
         {section.id === 'tasks' ? (
           <Tasks />
         ) : section.id === 'appearance' ? (
