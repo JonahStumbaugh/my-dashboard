@@ -1,0 +1,208 @@
+.meals-card__form {
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+}
+
+.meals-card__select,
+.meals-card__time {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+.meals-card__select {
+  min-width: 110px;
+}
+
+.meals-card__time {
+  min-width: 100px;
+  color-scheme: dark;
+}
+
+.meals-card__photo-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.meals-card__photo-btn {
+  flex-shrink: 0;
+}
+
+.meals-card__photo-preview {
+  position: relative;
+  display: inline-flex;
+}
+
+.meals-card__photo-preview img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.meals-card__photo-remove {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f87171;
+  color: #fff;
+  border: none;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.meals-card__section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-faint);
+  padding: 0 2px;
+}
+
+.meals-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.meals-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  transition: background var(--transition);
+}
+
+.meals-card__item:hover {
+  background: var(--color-border);
+}
+
+.meals-card__item:hover .ap-delete-btn {
+  opacity: 1;
+}
+
+.meals-card__thumb-btn {
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: zoom-in;
+  flex-shrink: 0;
+}
+
+.meals-card__thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  display: block;
+  transition: opacity var(--transition);
+}
+
+.meals-card__thumb:hover {
+  opacity: 0.85;
+}
+
+.meals-card__item-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.meals-card__item-top {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.meals-card__item-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.meals-card__item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.meals-card__item-type {
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  background: rgba(244, 114, 182, 0.12);
+  color: var(--color-appearance);
+  font-weight: 500;
+}
+
+.meals-card__item-time {
+  font-size: 11px;
+  color: var(--color-text-faint);
+  margin-left: auto;
+}
+
+.meals-card__item-notes {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Lightbox */
+.meals-card__lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: zoom-out;
+  padding: 24px;
+}
+
+.meals-card__lightbox img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  cursor: default;
+}
+
+.meals-card__lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.meals-card__lightbox-close:hover {
+  background: rgba(255,255,255,0.2);
+}

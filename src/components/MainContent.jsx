@@ -1,5 +1,6 @@
 import React from 'react'
 import Tasks from './Tasks.jsx'
+import Appearance from './Appearance.jsx'
 import './MainContent.css'
 
 const PLACEHOLDERS = {
@@ -71,6 +72,8 @@ function MainContent({ section, sidebarCollapsed }) {
       <div className="main-content__body">
         {section.id === 'tasks' ? (
           <Tasks />
+        ) : section.id === 'appearance' ? (
+          <Appearance />
         ) : (
           <>
             <div className="placeholder-card">

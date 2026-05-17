@@ -1,0 +1,52 @@
+.grooming-card__progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px 0;
+}
+
+.grooming-card__progress-bar {
+  flex: 1;
+  height: 3px;
+  background: var(--color-surface-2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.grooming-card__progress-fill {
+  height: 100%;
+  background: var(--color-appearance);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.grooming-card__pct {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  min-width: 30px;
+  text-align: right;
+}
+
+.grooming-card__done-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+}
+
+.grooming-card__reset {
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+.grooming-card__grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.grooming-card__item {
+  border-bottom: 1px solid transparent;
+}
