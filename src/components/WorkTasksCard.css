@@ -1,0 +1,226 @@
+.work-tasks-card__overdue-badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 8px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+/* Form */
+.work-tasks-card__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+}
+
+/* Priority picker */
+.work-tasks-card__priority-pick {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+}
+
+.work-tasks-card__pri-btn {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.work-tasks-card__pri-btn:hover {
+  border-color: var(--pcolor);
+  color: var(--pcolor);
+}
+
+.work-tasks-card__pri-btn--active {
+  background: color-mix(in srgb, var(--pcolor) 14%, transparent);
+  border-color: var(--pcolor);
+  color: var(--pcolor);
+  font-weight: 700;
+}
+
+/* Filter tabs */
+.work-tasks-card__filters {
+  display: flex;
+  gap: 2px;
+  padding: 8px 18px 0;
+}
+
+.work-tasks-card__filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.work-tasks-card__filter-btn:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+.work-tasks-card__filter-btn--active {
+  background: rgba(251,146,60,0.1);
+  border-color: rgba(251,146,60,0.2);
+  color: var(--color-work);
+}
+
+.work-tasks-card__filter-count {
+  font-size: 10.5px;
+  background: var(--color-surface-2);
+  border-radius: 8px;
+  padding: 1px 5px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.work-tasks-card__filter-btn--active .work-tasks-card__filter-count {
+  background: rgba(251,146,60,0.15);
+  color: var(--color-work);
+}
+
+/* Task row */
+.task-row {
+  border-radius: var(--radius-sm);
+  transition: background var(--transition);
+}
+
+.task-row:hover { background: var(--color-surface-2); }
+.task-row:hover .wk-delete-btn { opacity: 1; }
+
+.task-row--done { opacity: 0.55; }
+
+.task-row__main {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 6px;
+}
+
+/* Checkbox */
+.task-row__checkbox {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--color-border);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: all var(--transition);
+  color: #0a0500;
+}
+
+.task-row__checkbox svg { width: 10px; height: 10px; }
+.task-row__checkbox:hover { border-color: var(--tcolor); }
+.task-row__checkbox--done { background: var(--tcolor); border-color: var(--tcolor); }
+
+/* Body */
+.task-row__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: default;
+}
+
+.task-row__top {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.task-row__priority-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.task-row__title {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.task-row--done .task-row__title {
+  text-decoration: line-through;
+  color: var(--color-text-faint);
+}
+
+.task-row--overdue .task-row__title {
+  color: var(--color-text);
+}
+
+.task-row__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.task-row__priority-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.task-row__cat {
+  font-size: 11px;
+  color: var(--color-text-faint);
+}
+
+.task-row__due {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-faint);
+}
+
+.task-row__due--overdue {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.task-row__due--soon {
+  color: #f97316;
+  font-weight: 700;
+}
+
+/* Expanded notes */
+.task-row__notes {
+  padding: 0 6px 10px calc(10px + 20px + 10px);
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  white-space: pre-wrap;
+}

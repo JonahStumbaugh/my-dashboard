@@ -1,0 +1,244 @@
+.work {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+/* ── Banner ──────────────────────────────────────────────────────────────── */
+.work__banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px 20px;
+  border-left: 3px solid var(--color-work);
+}
+
+.work__banner-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.work__bank-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--color-work), #f59e0b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(251,146,60,0.3);
+}
+
+.work__bank-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.work__bank-role {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-top: 1px;
+}
+
+.work__banner-date {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  text-align: right;
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────────── */
+.work__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.work__col--full { grid-column: 1 / -1; }
+
+@media (max-width: 780px) {
+  .work__grid { grid-template-columns: 1fr; }
+  .work__col--full { grid-column: 1; }
+}
+
+/* ── Shared card shell ───────────────────────────────────────────────────── */
+.wk-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.wk-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 18px 13px;
+  border-bottom: 1px solid var(--color-border);
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.wk-card__title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wk-card__icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.wk-card__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 12px;
+}
+
+.wk-card__badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 8px;
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+}
+
+.wk-card__body {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+/* ── Shared inputs ───────────────────────────────────────────────────────── */
+.wk-input {
+  width: 100%;
+  padding: 9px 12px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.wk-input::placeholder { color: var(--color-text-faint); }
+
+.wk-input:focus {
+  border-color: var(--color-work);
+  box-shadow: 0 0 0 3px rgba(251,146,60,0.1);
+}
+
+.wk-textarea {
+  resize: vertical;
+  min-height: 72px;
+  line-height: 1.5;
+}
+
+.wk-row { display: flex; gap: 8px; }
+.wk-row > * { flex: 1; }
+
+/* ── Shared buttons ──────────────────────────────────────────────────────── */
+.wk-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  background: var(--color-work);
+  color: #1a0d00;
+  transition: opacity var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+
+.wk-btn:hover:not(:disabled) { opacity: 0.85; }
+.wk-btn:active:not(:disabled) { transform: scale(0.97); }
+.wk-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.wk-btn--ghost {
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+}
+
+.wk-btn--ghost:hover:not(:disabled) {
+  background: var(--color-border);
+  color: var(--color-text);
+  opacity: 1;
+}
+
+.wk-btn--sm { padding: 6px 11px; font-size: 12px; }
+
+.wk-btn svg { width: 12px; height: 12px; }
+
+/* ── Shared delete btn ───────────────────────────────────────────────────── */
+.wk-delete-btn {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition), color var(--transition), background var(--transition);
+  flex-shrink: 0;
+}
+
+.wk-delete-btn svg { width: 12px; height: 12px; }
+.wk-delete-btn:hover { color: #f87171; background: rgba(248,113,113,0.1); }
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.wk-empty {
+  text-align: center;
+  padding: 28px 0 12px;
+  color: var(--color-text-faint);
+  font-size: 13px;
+}
+
+.wk-divider {
+  height: 1px;
+  background: var(--color-border);
+}
+
+.wk-section-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-faint);
+}

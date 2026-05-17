@@ -1,0 +1,106 @@
+.priorities-card__progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px 0;
+}
+
+.priorities-card__progress-bar {
+  flex: 1;
+  height: 4px;
+  background: var(--color-surface-2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.priorities-card__progress-fill {
+  height: 100%;
+  background: var(--color-work);
+  border-radius: 2px;
+  transition: width 0.35s ease;
+}
+
+.priorities-card__pct {
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 44px;
+  text-align: right;
+  transition: color 0.2s;
+}
+
+.priorities-card__form {
+  display: flex;
+  gap: 8px;
+}
+
+.priorities-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Priority item */
+.priority-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 6px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition);
+}
+
+.priority-item:hover {
+  background: var(--color-surface-2);
+}
+
+.priority-item:hover .wk-delete-btn { opacity: 1; }
+
+.priority-item--done {
+  opacity: 0.6;
+}
+
+.priority-item__rank {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-work);
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.priority-item__check {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--color-border);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.priority-item__check svg { width: 10px; height: 10px; }
+
+.priority-item__check:hover { border-color: var(--color-work); }
+
+.priority-item__check--done {
+  background: var(--color-work);
+  border-color: var(--color-work);
+  color: #1a0d00;
+}
+
+.priority-item__text {
+  flex: 1;
+  font-size: 13.5px;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.priority-item--done .priority-item__text {
+  text-decoration: line-through;
+  color: var(--color-text-faint);
+}

@@ -4,6 +4,7 @@ import Appearance from './Appearance.jsx'
 import Finance from './Finance.jsx'
 import Habits from './Habits.jsx'
 import Calendar from './Calendar.jsx'
+import Work from './Work.jsx'
 import './MainContent.css'
 
 const PLACEHOLDERS = {
@@ -83,6 +84,8 @@ function MainContent({ section, sidebarCollapsed }) {
           <Habits />
         ) : section.id === 'calendar' ? (
           <Calendar />
+        ) : section.id === 'work' ? (
+          <Work />
         ) : (
           <>
             <div className="placeholder-card">
