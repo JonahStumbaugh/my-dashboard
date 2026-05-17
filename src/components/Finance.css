@@ -1,0 +1,202 @@
+.finance {
+  width: 100%;
+}
+
+.finance__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.finance__col--full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 800px) {
+  .finance__grid { grid-template-columns: 1fr; }
+  .finance__col--full { grid-column: 1; }
+}
+
+/* ── Shared card shell ── */
+.fin-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.fin-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 14px;
+  border-bottom: 1px solid var(--color-border);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.fin-card__title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fin-card__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  background: rgba(52, 211, 153, 0.12);
+  color: var(--color-finance);
+}
+
+.fin-card__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.fin-card__badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+}
+
+.fin-card__body {
+  padding: 18px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Shared inputs ── */
+.fin-input {
+  width: 100%;
+  padding: 10px 13px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-size: 13.5px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.fin-input::placeholder { color: var(--color-text-faint); }
+
+.fin-input:focus {
+  border-color: var(--color-finance);
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.1);
+}
+
+.fin-row {
+  display: flex;
+  gap: 10px;
+}
+
+.fin-row > * { flex: 1; }
+
+/* ── Shared buttons ── */
+.fin-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  background: var(--color-finance);
+  color: #0a1f17;
+  transition: opacity var(--transition), transform var(--transition);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.fin-btn:hover:not(:disabled) { opacity: 0.85; }
+.fin-btn:active:not(:disabled) { transform: scale(0.97); }
+.fin-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.fin-btn--ghost {
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+}
+
+.fin-btn--ghost:hover:not(:disabled) {
+  background: var(--color-border);
+  color: var(--color-text);
+  opacity: 1;
+}
+
+.fin-btn svg { width: 13px; height: 13px; }
+
+/* ── Shared delete ── */
+.fin-delete-btn {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--color-text-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition), color var(--transition), background var(--transition);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.fin-delete-btn svg { width: 13px; height: 13px; }
+.fin-delete-btn:hover { color: #f87171; background: rgba(248,113,113,0.1); }
+
+/* ── Shared progress bar ── */
+.fin-progress {
+  height: 6px;
+  background: var(--color-surface-2);
+  border-radius: 3px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.fin-progress__fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.35s ease;
+}
+
+/* ── Section label ── */
+.fin-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-faint);
+}
+
+.fin-divider {
+  height: 1px;
+  background: var(--color-border);
+}
+
+.fin-empty {
+  text-align: center;
+  padding: 28px 0 8px;
+  color: var(--color-text-faint);
+  font-size: 13px;
+}

@@ -1,0 +1,154 @@
+.spending-card__total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.spending-card__total-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f87171;
+  letter-spacing: -0.03em;
+}
+
+.spending-card__total-label {
+  font-size: 11px;
+  color: var(--color-text-faint);
+}
+
+/* Top chips */
+.spending-card__top-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.spending-card__chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--chip-color);
+}
+
+.spending-card__chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--chip-color);
+  flex-shrink: 0;
+}
+
+.spending-card__chip-cat {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.spending-card__chip-amt {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-left: 2px;
+}
+
+/* Bar chart */
+.spending-card__chart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.spending-card__bar-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 120px;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .spending-card__bar-row {
+    grid-template-columns: 120px 1fr 90px;
+  }
+}
+
+.spending-card__bar-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.spending-card__bar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.spending-card__bar-cat {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spending-card__bar-track {
+  height: 8px;
+  background: var(--color-surface-2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.spending-card__bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+  min-width: 4px;
+}
+
+.spending-card__bar-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.spending-card__bar-amt {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+  min-width: 70px;
+  text-align: right;
+}
+
+.spending-card__bar-pct {
+  font-size: 11px;
+  color: var(--color-text-faint);
+  min-width: 38px;
+  text-align: right;
+}
+
+/* Stacked color strip */
+.spending-card__ring-row {
+  display: flex;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  gap: 2px;
+  margin-top: 4px;
+}
+
+.spending-card__ring-seg {
+  flex: 1;
+  height: 100%;
+}
+
+.spending-card__ring-seg-bar {
+  height: 100%;
+  border-radius: 2px;
+}
