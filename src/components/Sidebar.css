@@ -1,0 +1,208 @@
+.sidebar {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  transition: width var(--transition), min-width var(--transition);
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+.sidebar--collapsed {
+  width: var(--sidebar-collapsed-width);
+  min-width: var(--sidebar-collapsed-width);
+}
+
+/* Header */
+.sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid var(--color-border);
+  gap: 10px;
+  min-height: 72px;
+}
+
+.sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar__brand-icon {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  background: linear-gradient(135deg, var(--color-accent), #a78bfa);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(108,99,255,0.35);
+}
+
+.sidebar__brand-icon--center {
+  margin: 0 auto;
+}
+
+.sidebar__brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.sidebar__brand-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar__brand-date {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Collapse button */
+.sidebar__collapse-btn {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), color var(--transition);
+}
+
+.sidebar__collapse-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.sidebar__collapse-btn:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+.sidebar--collapsed .sidebar__header {
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 12px;
+  gap: 8px;
+}
+
+.sidebar--collapsed .sidebar__collapse-btn {
+  width: 32px;
+  height: 32px;
+}
+
+/* Nav */
+.sidebar__nav {
+  flex: 1;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar__nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sidebar__nav-item:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+.sidebar__nav-item--active {
+  background: var(--color-accent-subtle);
+  color: var(--item-color, var(--color-accent));
+}
+
+.sidebar__nav-item--active:hover {
+  background: var(--color-accent-subtle);
+}
+
+.sidebar__nav-icon {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar__nav-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.sidebar__nav-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar__nav-indicator {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--item-color, var(--color-accent));
+  min-width: 4px;
+}
+
+/* Collapsed nav centering */
+.sidebar--collapsed .sidebar__nav-item {
+  justify-content: center;
+  padding: 10px;
+}
+
+/* Footer */
+.sidebar__footer {
+  padding: 14px 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.sidebar__footer-text {
+  font-size: 11px;
+  color: var(--color-text-faint);
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
