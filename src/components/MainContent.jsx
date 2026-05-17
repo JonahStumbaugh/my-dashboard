@@ -2,6 +2,7 @@ import React from 'react'
 import Tasks from './Tasks.jsx'
 import Appearance from './Appearance.jsx'
 import Finance from './Finance.jsx'
+import Habits from './Habits.jsx'
 import './MainContent.css'
 
 const PLACEHOLDERS = {
@@ -77,6 +78,8 @@ function MainContent({ section, sidebarCollapsed }) {
           <Appearance />
         ) : section.id === 'finance' ? (
           <Finance />
+        ) : section.id === 'habits' ? (
+          <Habits />
         ) : (
           <>
             <div className="placeholder-card">

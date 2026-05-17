@@ -1,0 +1,585 @@
+.habits {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+/* ── Stats bar ───────────────────────────────────────────────────────────── */
+.habits__stats {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px 22px;
+  flex-wrap: wrap;
+}
+
+.habits__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 56px;
+}
+
+.habits__stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--color-habits);
+}
+
+.habits__stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+  font-weight: 500;
+}
+
+.habits__stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--color-border);
+}
+
+.habits__stat-date {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--color-text-faint);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ── Card shell ──────────────────────────────────────────────────────────── */
+.habits__card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.habits__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 14px;
+  border-bottom: 1px solid var(--color-border);
+  gap: 12px;
+}
+
+.habits__card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.habits__card-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.habits__card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.habits__card-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+}
+
+.habits__card-body {
+  padding: 18px 20px;
+}
+
+/* ── Today progress bar ──────────────────────────────────────────────────── */
+.habits__today-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px 0;
+}
+
+.habits__today-bar {
+  flex: 1;
+  height: 5px;
+  background: var(--color-surface-2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.habits__today-fill {
+  height: 100%;
+  background: var(--color-habits);
+  border-radius: 3px;
+  transition: width 0.35s ease;
+}
+
+.habits__today-pct {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-habits);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ── Add habit button ────────────────────────────────────────────────────── */
+.habits__add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  background: var(--color-habits);
+  color: #1a1200;
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+
+.habits__add-btn:hover { opacity: 0.85; }
+.habits__add-btn:active { transform: scale(0.97); }
+
+/* ── Add form ────────────────────────────────────────────────────────────── */
+.habits__form {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.habits__form-input {
+  width: 100%;
+  padding: 10px 13px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.habits__form-input::placeholder { color: var(--color-text-faint); }
+
+.habits__form-input:focus {
+  border-color: var(--color-habits);
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+}
+
+.habits__form-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.habits__color-picker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.habits__color-label {
+  font-size: 12px;
+  color: var(--color-text-faint);
+  font-weight: 500;
+  margin-right: 2px;
+}
+
+.habits__color-swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform var(--transition), border-color var(--transition);
+  padding: 0;
+}
+
+.habits__color-swatch:hover { transform: scale(1.15); }
+
+.habits__color-swatch--active {
+  border-color: #fff;
+  transform: scale(1.2);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.3);
+}
+
+.habits__form-preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  font-size: 14px;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.habits__form-preview-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--hcolor);
+  flex-shrink: 0;
+}
+
+.habits__form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.habits__btn {
+  flex: 1;
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition);
+  background: var(--color-habits);
+  color: #1a1200;
+}
+
+.habits__btn:hover:not(:disabled) { opacity: 0.85; }
+.habits__btn:active:not(:disabled) { transform: scale(0.97); }
+.habits__btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.habits__btn--ghost {
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.habits__btn--ghost:hover:not(:disabled) {
+  background: var(--color-border);
+  color: var(--color-text);
+  opacity: 1;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.habits__empty {
+  text-align: center;
+  padding: 36px 0 20px;
+  color: var(--color-text-faint);
+  font-size: 13.5px;
+}
+
+/* ── Day column labels ───────────────────────────────────────────────────── */
+.habits__list {
+  padding: 8px 20px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.habits__day-labels {
+  display: flex;
+  align-items: center;
+  padding: 8px 0 4px;
+}
+
+.habits__day-labels-spacer {
+  /* matches: checkbox + gap + info */
+  width: calc(28px + 12px + 1fr);
+  flex: 1;
+  min-width: 120px;
+}
+
+.habits__day-label {
+  width: 22px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.habits__day-label--today {
+  color: var(--color-habits);
+}
+
+.habits__day-labels-end {
+  /* matches delete button width */
+  width: calc(28px + 8px);
+}
+
+/* ── Habit row ───────────────────────────────────────────────────────────── */
+.habit-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition);
+}
+
+.habit-row:last-child { border-bottom: none; }
+.habit-row:hover { background: rgba(255,255,255,0.015); }
+.habit-row:hover .habit-row__delete { opacity: 1; }
+
+/* Checkbox */
+.habit-row__checkbox {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 8px;
+  border: 2px solid var(--color-border);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  flex-shrink: 0;
+  color: #0d0d0d;
+}
+
+.habit-row__checkbox svg { width: 13px; height: 13px; }
+
+.habit-row__checkbox:hover {
+  border-color: var(--hcolor);
+}
+
+.habit-row--done .habit-row__checkbox {
+  background: var(--hcolor);
+  border-color: var(--hcolor);
+}
+
+/* Info */
+.habit-row__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 80px;
+}
+
+.habit-row__name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--transition);
+}
+
+.habit-row--done .habit-row__name {
+  color: var(--color-text-muted);
+}
+
+.habit-row__streak {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* 7-day mini track */
+.habit-row__week {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.habit-row__day {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.habit-row__day:hover:not(:disabled) {
+  border-color: var(--hcolor);
+  background: rgba(255,255,255,0.05);
+}
+
+.habit-row__day--done {
+  background: var(--hcolor) !important;
+  border-color: var(--hcolor) !important;
+}
+
+.habit-row__day--today {
+  border-color: var(--color-habits);
+}
+
+.habit-row__day--future {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* Delete button */
+.habit-row__delete {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--color-text-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition), color var(--transition), background var(--transition);
+  flex-shrink: 0;
+}
+
+.habit-row__delete svg { width: 13px; height: 13px; }
+
+.habit-row__delete:hover {
+  color: #f87171;
+  background: rgba(248,113,113,0.1);
+  opacity: 1 !important;
+}
+
+/* ── Weekly grid ─────────────────────────────────────────────────────────── */
+.week-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-x: auto;
+}
+
+.week-grid__header {
+  display: flex;
+  align-items: center;
+  padding: 0 0 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.week-grid__habit-col {
+  flex: 1;
+  min-width: 120px;
+}
+
+.week-grid__day-header {
+  width: 44px;
+  min-width: 44px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.week-grid__day-header--today {
+  color: var(--color-habits);
+}
+
+.week-grid__streak-col {
+  width: 76px;
+  min-width: 76px;
+  text-align: right;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.week-grid__row {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.week-grid__row:last-child { border-bottom: none; }
+
+.week-grid__habit-name {
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--color-text);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 8px;
+}
+
+.week-grid__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.week-grid__cell {
+  width: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.week-grid__cell--today {
+  background: rgba(251,191,36,0.05);
+  border-radius: var(--radius-sm);
+}
+
+.week-grid__pip {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  transition: all var(--transition);
+}
+
+.week-grid__pip--done {
+  border-color: transparent;
+}
+
+.week-grid__pip--future {
+  opacity: 0.2;
+}
+
+.week-grid__streak-val {
+  width: 76px;
+  min-width: 76px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 700;
+}
