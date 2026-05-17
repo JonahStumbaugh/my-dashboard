@@ -1,4 +1,5 @@
 import React from 'react'
+import Tasks from './Tasks.jsx'
 import './MainContent.css'
 
 const PLACEHOLDERS = {
@@ -43,7 +44,7 @@ const PLACEHOLDERS = {
 function MainContent({ section, sidebarCollapsed }) {
   if (!section) return null
 
-  const placeholder = PLACEHOLDERS[section.id]
+  const placeholder = PLACEHOLDERS[section.id] || null
 
   return (
     <main
@@ -68,42 +69,48 @@ function MainContent({ section, sidebarCollapsed }) {
       </div>
 
       <div className="main-content__body">
-        <div className="placeholder-card">
-          <div className="placeholder-card__emoji">{placeholder.emoji}</div>
-          <h2 className="placeholder-card__title">{placeholder.title}</h2>
-          <p className="placeholder-card__description">{placeholder.description}</p>
+        {section.id === 'tasks' ? (
+          <Tasks />
+        ) : (
+          <>
+            <div className="placeholder-card">
+              <div className="placeholder-card__emoji">{placeholder.emoji}</div>
+              <h2 className="placeholder-card__title">{placeholder.title}</h2>
+              <p className="placeholder-card__description">{placeholder.description}</p>
 
-          <div className="placeholder-card__preview">
-            <p className="placeholder-card__preview-label">Coming soon:</p>
-            <ul className="placeholder-card__preview-list">
-              {placeholder.preview.map((item, i) => (
-                <li key={i} className="placeholder-card__preview-item">
-                  <span
-                    className="placeholder-card__preview-dot"
-                    style={{ backgroundColor: section.color }}
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="placeholder-grid">
-          {[1, 2, 3].map(i => (
-            <div key={i} className="placeholder-widget">
-              <div
-                className="placeholder-widget__bar"
-                style={{ backgroundColor: section.color }}
-              />
-              <div className="placeholder-widget__shimmer">
-                <div className="shimmer-line shimmer-line--short" />
-                <div className="shimmer-line shimmer-line--medium" />
-                <div className="shimmer-line shimmer-line--long" />
+              <div className="placeholder-card__preview">
+                <p className="placeholder-card__preview-label">Coming soon:</p>
+                <ul className="placeholder-card__preview-list">
+                  {placeholder.preview.map((item, i) => (
+                    <li key={i} className="placeholder-card__preview-item">
+                      <span
+                        className="placeholder-card__preview-dot"
+                        style={{ backgroundColor: section.color }}
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-          ))}
-        </div>
+
+            <div className="placeholder-grid">
+              {[1, 2, 3].map(i => (
+                <div key={i} className="placeholder-widget">
+                  <div
+                    className="placeholder-widget__bar"
+                    style={{ backgroundColor: section.color }}
+                  />
+                  <div className="placeholder-widget__shimmer">
+                    <div className="shimmer-line shimmer-line--short" />
+                    <div className="shimmer-line shimmer-line--medium" />
+                    <div className="shimmer-line shimmer-line--long" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </main>
   )
