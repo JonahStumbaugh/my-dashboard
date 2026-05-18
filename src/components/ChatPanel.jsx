@@ -21,40 +21,6 @@ const SECTION_HINTS = {
   work: 'Ask about work tasks, banking concepts, career advice, or meeting prep…',
 }
 
-function ApiKeySetup({ accent }) {
-  const { setApiKey } = useDashboard()
-  const [draft, setDraft] = useState('')
-
-  function save() {
-    const trimmed = draft.trim()
-    if (trimmed) setApiKey(trimmed)
-  }
-
-  return (
-    <div className="api-key-banner">
-      <div className="api-key-banner__title">🔑 Connect your Anthropic API key</div>
-      <p className="api-key-banner__desc">
-        To use the AI chat, add your Anthropic API key. It's stored only in your browser's localStorage — never sent anywhere except directly to Anthropic.
-      </p>
-      <div className="api-key-banner__row">
-        <input
-          className="api-key-banner__input"
-          type="password"
-          placeholder="sk-ant-..."
-          value={draft}
-          onChange={e => setDraft(e.target.value)}
-          onKeyDown={e => e.key === 'Enter' && save()}
-          autoComplete="off"
-          spellCheck={false}
-        />
-        <button className="api-key-banner__save" style={{ background: accent }} onClick={save} disabled={!draft.trim()}>
-          Save
-        </button>
-      </div>
-    </div>
-  )
-}
-
 function ChatMessage({ msg }) {
   return (
     <div className={`chat-msg chat-msg--${msg.role}`}>
@@ -65,7 +31,7 @@ function ChatMessage({ msg }) {
 
 function ChatPanel({ sectionId, sectionColor }) {
   const [open, setOpen] = useState(false)
-  const { apiKey, userProfile } = useDashboard()
+  const { userProfile } = useDashboard()
   const { messages, loading, error, sendMessage, clearHistory } = useAIChat(sectionId)
   const [draft, setDraft] = useState('')
   const messagesEndRef = useRef(null)
@@ -130,65 +96,59 @@ function ChatPanel({ sectionId, sectionColor }) {
 
       {open && (
         <div className="chat-panel__body">
-          {!apiKey ? (
-            <ApiKeySetup accent={accent} />
-          ) : (
-            <>
-              <div className="chat-panel__messages">
-                {messages.length === 0 && (
-                  <div className="chat-panel__empty">
-                    <strong>{label}</strong>
-                    {hint}
-                    <br /><br />
-                    I'll remember what you share across all sections.
-                  </div>
-                )}
-                {messages.map((msg, i) => (
-                  <ChatMessage key={i} msg={msg} />
-                ))}
-                {loading && (
-                  <div className="chat-panel__typing">
-                    <span /><span /><span />
-                  </div>
-                )}
-                <div ref={messagesEndRef} />
+          <div className="chat-panel__messages">
+            {messages.length === 0 && (
+              <div className="chat-panel__empty">
+                <strong>{label}</strong>
+                {hint}
+                <br /><br />
+                I'll remember what you share across all sections.
               </div>
-
-              {error && <div className="chat-panel__error">{error}</div>}
-
-              <div className="chat-panel__footer">
-                <textarea
-                  ref={el => { inputRef.current = el; textareaRef.current = el }}
-                  className="chat-panel__input"
-                  placeholder={hint}
-                  value={draft}
-                  onChange={handleInput}
-                  onKeyDown={handleKeyDown}
-                  rows={1}
-                  disabled={loading}
-                />
-                <div className="chat-panel__actions">
-                  {messages.length > 0 && (
-                    <button className="chat-panel__clear" onClick={clearHistory} title="Clear history">
-                      Clear
-                    </button>
-                  )}
-                  <button
-                    className="chat-panel__send"
-                    onClick={handleSend}
-                    disabled={!draft.trim() || loading}
-                    style={{ background: accent }}
-                    aria-label="Send"
-                  >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="22" y1="2" x2="11" y2="13" />
-                      <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                    </svg>
-                  </button>
-                </div>
+            )}
+            {messages.map((msg, i) => (
+              <ChatMessage key={i} msg={msg} />
+            ))}
+            {loading && (
+              <div className="chat-panel__typing">
+                <span /><span /><span />
               </div>
-            </>
-          )}
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          {error && <div className="chat-panel__error">{error}</div>}
+
+          <div className="chat-panel__footer">
+            <textarea
+              ref={el => { inputRef.current = el; textareaRef.current = el }}
+              className="chat-panel__input"
+              placeholder={hint}
+              value={draft}
+              onChange={handleInput}
+              onKeyDown={handleKeyDown}
+              rows={1}
+              disabled={loading}
+            />
+            <div className="chat-panel__actions">
+              {messages.length > 0 && (
+                <button className="chat-panel__clear" onClick={clearHistory} title="Clear history">
+                  Clear
+                </button>
+              )}
+              <button
+                className="chat-panel__send"
+                onClick={handleSend}
+                disabled={!draft.trim() || loading}
+                style={{ background: accent }}
+                aria-label="Send"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

@@ -49,8 +49,10 @@ export const UPDATE_PROFILE_TOOL = {
   },
 }
 
-export async function sendChatMessage({ apiKey, messages, systemPrompt, onProfileUpdate }) {
-  const client = new Anthropic({ apiKey, dangerouslyAllowBrowser: true })
+const API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY
+
+export async function sendChatMessage({ messages, systemPrompt, onProfileUpdate }) {
+  const client = new Anthropic({ apiKey: API_KEY, dangerouslyAllowBrowser: true })
 
   const response = await client.messages.create({
     model: MODEL,
