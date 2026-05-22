@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react'
 
 const PROFILE_KEY = 'dashboard_user_profile'
+const API_KEY_STORAGE = 'dashboard_anthropic_key'
 
 const defaultProfile = {
   name: null,
@@ -27,14 +28,25 @@ function loadProfile() {
   }
 }
 
+function loadApiKey() {
+  return localStorage.getItem(API_KEY_STORAGE) || ''
+}
+
 const DashboardContext = createContext(null)
 
 export function DashboardProvider({ children }) {
   const [userProfile, setUserProfile] = useState(loadProfile)
+  const [apiKey, setApiKeyState] = useState(loadApiKey)
 
   useEffect(() => {
     localStorage.setItem(PROFILE_KEY, JSON.stringify(userProfile))
   }, [userProfile])
+
+  const setApiKey = useCallback((key) => {
+    setApiKeyState(key)
+    if (key) localStorage.setItem(API_KEY_STORAGE, key)
+    else localStorage.removeItem(API_KEY_STORAGE)
+  }, [])
 
   const updateProfile = useCallback((updates) => {
     setUserProfile(prev => {
@@ -58,7 +70,7 @@ export function DashboardProvider({ children }) {
   }, [])
 
   return (
-    <DashboardContext.Provider value={{ userProfile, updateProfile }}>
+    <DashboardContext.Provider value={{ userProfile, updateProfile, apiKey, setApiKey }}>
       {children}
     </DashboardContext.Provider>
   )

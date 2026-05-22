@@ -20,7 +20,7 @@ function saveHistory(sectionId, messages) {
 }
 
 export function useAIChat(sectionId) {
-  const { userProfile, updateProfile } = useDashboard()
+  const { userProfile, updateProfile, apiKey } = useDashboard()
   const [messages, setMessages] = useState(() => loadHistory(sectionId))
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -28,6 +28,10 @@ export function useAIChat(sectionId) {
 
   const sendMessage = useCallback(async (text) => {
     if (!text.trim() || loading) return
+    if (!apiKey) {
+      setError('Add your Anthropic API key to start chatting.')
+      return
+    }
 
     const userMsg = { role: 'user', content: text.trim() }
     const nextMessages = [...messages, userMsg]
@@ -39,13 +43,10 @@ export function useAIChat(sectionId) {
 
     try {
       const systemPrompt = buildSystemPrompt(sectionId, userProfile)
-
-      const apiMessages = nextMessages.map(m => ({
-        role: m.role,
-        content: m.content,
-      }))
+      const apiMessages = nextMessages.map(m => ({ role: m.role, content: m.content }))
 
       const reply = await sendChatMessage({
+        apiKey,
         messages: apiMessages,
         systemPrompt,
         onProfileUpdate: updateProfile,
@@ -64,7 +65,7 @@ export function useAIChat(sectionId) {
     } finally {
       if (!abortRef.current) setLoading(false)
     }
-  }, [messages, loading, sectionId, userProfile, updateProfile])
+  }, [messages, loading, apiKey, sectionId, userProfile, updateProfile])
 
   const clearHistory = useCallback(() => {
     setMessages([])
